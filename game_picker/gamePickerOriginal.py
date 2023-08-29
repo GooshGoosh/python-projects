@@ -7,14 +7,14 @@ import pyinputplus as pyip
 import random
 
 # Variables to hold paths to game list files:
-PS5 = '/home/alexg/Documents/txt-files/ps5-games.txt'
-PS4 = '/home/alexg/Documents/txt-files/ps4-games.txt'
-PS3 = '/home/alexg/Documents/txt-files/ps3-games.txt'
-PS2 = '/home/alexg/Documents/txt-files/ps2-games.txt'
-Switch = '/home/alexg/Documents/txt-files/switch-games.txt'
-GameCube = '/home/alexg/Documents/txt-files/gamecube-games.txt'
-N64 = '/home/alexg/Documents/txt-files/n64-games.txt'
-SNES = '/home/alexg/Documents/txt-files/snes-games.txt'
+PS5 = 'ps5-games.txt'
+PS4 = 'ps4-games.txt'
+PS3 = 'ps3-games.txt'
+PS2 = 'ps2-games.txt'
+Switch = 'switch-games.txt'
+GameCube = 'gamecube-games.txt'
+N64 = 'n64-games.txt'
+SNES = 'snes-games.txt'
 
 # Menu for the user to select a console:
 print('\n')
