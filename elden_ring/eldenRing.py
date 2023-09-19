@@ -1,19 +1,16 @@
 #!/usr/bin/env python3
 
-# eldenRing.py - Mini Elden Ring-based game that lets the user fight the tutorial boss Soldier of Godrick
-# and a majority of the field, mini, and main bosses from Elden Ring. Uses random numbers to decide if the Tarnished won/lost the fight.
-#
-# TODO:
-# Similar to rock, paper, scissors; The player chooses either 'Attack', 'Block', or 'Roll' as an action.
-# The boss will randomly get assigned 'Quick Attack', 'Delay Attack', 'Grab Attack'. 
-# The winning order is as follows:
-# Attack > Delay Attack, Attack = Quick Attack, Attack = Grab Attack
-# Block > Quick Attack, Block > Delay Attack, Block < Grab Attack
-# Roll > Quick Attack, Roll > Grab Attack, Roll > Delay Attack
-#
-# Allows class selection via pyinputplus module and a list of .csv files stored in /home/user/Documents/elden_ring/classes.
-# The .csv file contains the class name followed by each stat and their values for each Elden Ring starting class (e.g. Vig,0).
-# The stats are followed by the 6 equipment slots for the character including Right Hand, Left Hand, Helm, Torso, Wrists, and Legs.
+# eldenRing.py - Mini Elden Ring-based game that lets the user fight
+# the tutorial boss Soldier of Godrick and a majority of the field,
+# mini, and main bosses from Elden Ring. Uses random numbers to
+# decide if the Tarnished won/lost the fight.
+
+# Allows class selection via pyinputplus module and a list of .json
+# files stored in elden_ring/classes. The .csv file contains the
+# class name followed by each stat and their values for each Elden
+# Ring starting class (e.g. Vig,0). The stats are followed by the 6
+# equipment slots for the character including Right Hand, Left Hand,
+# Helm, Torso, Wrists, and Legs.
  
 
 import random
