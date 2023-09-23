@@ -257,6 +257,10 @@ class Boss():
         # Return the boss' armor for player damage rolls.
         return self.__bossArmor
 
+    def get_name(self):
+        # Return the boss' name.
+        return self.__bossName
+
     def reduce_health(self, damage = 0):
         # Reduce the boss' health by the damage amount.
         self.__bossHealth -= damage
@@ -270,6 +274,53 @@ class Boss():
         # Round the damage number up to nearest whole number.
         return math.ceil(self.__bossAttack * (roll_d10() / 10))
 
+
+def player_attack_phase(playerObj, bossObj):
+    # Allows the player to perform an attack on the boss.
+    # Use input() so the fight is interactive for the user.
+    print('\nTarnished attack phase.')
+    input("Press 'ENTER' to roll for attack...")
+    if roll_d20() < bossObj.get_armor():    # Attack roll fails if the boss'
+        print('Attack roll failed!')        # armor is higher than the roll.
+        time.sleep(1)   # Pause for the player to read the roll result.
+    else:
+        print('Attack roll success!')
+        input("Press 'ENTER' to roll for damage...")
+        # Get the damage done to the boss, reduce the boss' health, and let
+        # the player know how much damage was done to the boss.
+        dmg = playerObj.attack()
+        bossObj.reduce_health(dmg)
+        print('Hit {} for {} damage!'.format(bossObj.get_name, dmg))
+
+
+def boss_attack_phase(playerObj, bossObj):
+    # Allows the boss to perform an attack on the player.
+    print('\nBoss attack phase.')
+    if roll_d20() < playerObj.get_armor():  # Attack roll fails if the
+        print('Attack roll failed!')        # player's armor is higher than
+        time.sleep(1)                       # the roll result.
+    else:
+        # Let the player know what steps are happening.
+        print('Attack roll success!')
+        time.sleep(0.5)
+        print('Rolling for damage...')
+        time.sleep(0.5)
+        # Get the damage done to the player, reduce the player's health, and
+        # let the player know how much damage was done to the player.
+        dmg = bossObj.attack()
+        playerObj.reduce_health(dmg)
+        print('Hit Tarnished for {} damage!'.format(dmg))
+        # Allow the player to interactively proceed to the next phase.
+        input("Press 'ENTER' to continue...")
+
+
+# Function to fight the tutorial boss "Soldier of Godrick".
+# This should be the first fight performed by the player and should only
+# occur once in the program.
+def tutorial_boss_fight(playerObj, bossObj):
+    # Loop until either the player or the boss run out of health.
+    #while playerObj.get_health() > 0 or bossObj.get_health() > 0:
+        
 
 
 def main():
