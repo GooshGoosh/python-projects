@@ -285,12 +285,15 @@ def player_attack_phase(playerObj, bossObj):
         time.sleep(1)   # Pause for the player to read the roll result.
     else:
         print('Attack roll success!')
+        time.sleep(0.5)
         input("Press 'ENTER' to roll for damage...")
+        time.sleep(0.5)
         # Get the damage done to the boss, reduce the boss' health, and let
         # the player know how much damage was done to the boss.
         dmg = playerObj.attack()
         bossObj.reduce_health(dmg)
-        print('Hit {} for {} damage!'.format(bossObj.get_name, dmg))
+        print('Hit {} for {} damage!'.format(bossObj.get_name(), dmg))
+        time.sleep(1)
 
 
 def boss_attack_phase(playerObj, bossObj):
@@ -318,34 +321,44 @@ def boss_attack_phase(playerObj, bossObj):
 # This should be the first fight performed by the player and should only
 # occur once in the program.
 def tutorial_boss_fight(playerObj, bossObj):
+    # Introduce the boss to the player and begin the boss fight.
+    print('\nA CHALLENGER APPROACHES\n')
+    print('Begin fight VS {}'.format(bossObj.get_name()))
+    time.sleep(1)
+
     # Loop until either the player or the boss run out of health.
-    #while playerObj.get_health() > 0 or bossObj.get_health() > 0:
-        
+    while playerObj.get_health() > 0 and bossObj.get_health() > 0:
+        # Separate the attack phases for easier readability.
+        print('\n' + ('-' * 30))
+        playerObj.print_health()    # Display the player's current hp.
+        bossObj.print_stats()       # Display the boss' current hp.
+
+        # Begin player attack phase.
+        player_attack_phase(playerObj, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(playerObj, bossObj)
+
+    # If the player has no hp, then show a defeat screen and exit the program.
+    if playerObj.get_health() <= 0:
+        print('\nYOU DIED\n')
+        time.sleep(1)
+        sys.exit(0)
+    
+    # If the boss has no hp, then show a victory screen and proceed.
+    print('\nENEMY FELLED\n')
+    time.sleep(1)
+    # Make the rest action interactive for the player.
+    input("Press'ENTER' to rest...")
 
 
 def main():
     # TEST DATA #
     playerOne = Character()
-    playerOne.print_stats()
-    print(playerOne.get_armor())
-    print(playerOne.get_health())
-    #playerOne.grace()
-    #print(playerOne.attack(69))
-    #playerOne.reduce_health(20)
-    #print(playerOne.get_health())
-    playerOne.print_health()
-
     bossOne = Boss()
-    bossOne.print_stats()
-    #print(bossOne.get_armor())
-    #print(bossOne.attack(69))
-    #bossOne.reduce_health(20)
-    bossOne.set_field_boss()
-    bossOne.print_stats()
-    bossOne.set_mini_boss()
-    bossOne.print_stats()
-    bossOne.set_main_boss()
-    bossOne.print_stats()
+    playerOne.print_stats()
+
+    tutorial_boss_fight(playerOne, bossOne)
     # TEST DATA #
 
 
