@@ -101,10 +101,16 @@ class Character:
         # Join the path to the classes .json files and the chosen class to get
         # the .json file for the chosen class and load the json file data into
         # classData.
-        jsonFile = open(os.path.join(Character.__classesPath,
-                                    self.__character.lower() + '.json'))
-        self.__classData = json.load(jsonFile)
-        jsonFile.close()
+        try:
+            jsonFile = open(os.path.join(Character.__classesPath,
+                                        self.__character.lower() + '.json'), 'r')
+            self.__classData = json.load(jsonFile)
+            jsonFile.close()
+        except FileNotFoundError:
+            print('\nFile {} not found! Exiting...'
+                  .format(os.path.join(Character.__classesPath,
+                                       self.__character.lower() + '.json')))
+            sys.exit(1)
 
         for k, v in self.__classData['Stats'].items():
             # Store the player's stats in the __stats dict.
@@ -118,8 +124,13 @@ class Character:
         # Search through the starter weapons file to find the weapon that is
         # in the player's right hand and give the player that weapon's attack
         # rating.
-        with open(Character.__starterWeaponsPath) as jsonFile:
-            self.__weaponReader = json.load(jsonFile)
+        try:
+            with open(Character.__starterWeaponsPath, 'r') as jsonFile:
+                self.__weaponReader = json.load(jsonFile)
+        except FileNotFoundError:
+            print('\nFile {} not found! Exiting...'
+                  .format(Character.__starterWeaponsPath))
+            sys.exit(1)
 
         for k, v in self.__weaponReader.items():
             if k == self.__equipment['Right Hand:']:
@@ -212,11 +223,17 @@ class Boss():
         self.__bossArmor = 9
 
         # Read the field boss list file and create a list of field bosses.
-        with open(os.path.join(Boss.__bossesPath,
-                               'field-boss-list.txt')) as bossFile:
-            bossList = bossFile.readlines()
-            # Use a random choice from the boss list for the boss name.
-            self.__bossName = random.choice(bossList).rstrip()
+        try:
+            with open(os.path.join(Boss.__bossesPath,
+                                   'field-boss-list.txt', 'r')) as bossFile:
+                bossList = bossFile.readlines()
+                # Use a random choice from the boss list for the boss name.
+                self.__bossName = random.choice(bossList).rstrip()
+        except FileNotFoundError:
+            print('\nFile {} not found! Exiting...'
+                  .format(os.path.join(Boss.__bossesPath,
+                                       'field-boss-list.txt')))
+            sys.exit(1)
 
     def set_mini_boss(self):
         # Set the boss stats for a mini boss.
@@ -225,11 +242,17 @@ class Boss():
         self.__bossArmor = 11
 
         # Read the mini boss list file and create a list of mini bosses.
-        with open(os.path.join(Boss.__bossesPath,
-                               'mini-boss-list.txt')) as bossFile:
-            bossList = bossFile.readlines()
-            # Use a random choice from the boss list for the boss name.
-            self.__bossName = random.choice(bossList).rstrip()
+        try:
+            with open(os.path.join(Boss.__bossesPath,
+                                   'mini-boss-list.txt', 'r')) as bossFile:
+                bossList = bossFile.readlines()
+                # Use a random choice from the boss list for the boss name.
+                self.__bossName = random.choice(bossList).rstrip()
+        except FileNotFoundError:
+            print('\nFile {} not found! Exiting...'
+                  .format(os.path.join(Boss.__bossesPath,
+                                       'mini-boss-list.txt')))
+            sys.exit(1)
 
     def set_main_boss(self):
         # Set the boss stats for the main boss.
@@ -238,11 +261,17 @@ class Boss():
         self.__bossArmor = 13
 
         # Read the main boss list file and create a list of main bosses.
-        with open(os.path.join(Boss.__bossesPath,
-                               'main-boss-list.txt')) as bossFile:
-            bossList = bossFile.readlines()
-            # Use a random choice from the boss list for the boss name.
-            self.__bossName = random.choice(bossList).rstrip()
+        try:
+            with open(os.path.join(Boss.__bossesPath,
+                                   'main-boss-list.txt', 'r')) as bossFile:
+                bossList = bossFile.readlines()
+                # Use a random choice from the boss list for the boss name.
+                self.__bossName = random.choice(bossList).rstrip()
+        except FileNotFoundError:
+            print('\nFile {} not found! Exiting...'
+                  .format(os.path.join(Boss.__bossesPath,
+                                       'main-boss-list.txt')))
+            sys.exit(1)
 
     def print_stats(self):
         # Print the boss' name and health.
