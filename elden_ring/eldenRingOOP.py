@@ -352,14 +352,129 @@ def tutorial_boss_fight(playerObj, bossObj):
     input("Press'ENTER' to rest...")
 
 
+def field_boss_fight(playerObj, bossObj):
+    # Set the boss stats to the stats appropriate for a field boss.
+    bossObj.set_field_boss()
+
+    # Introduce the boss to the player and begin the boss fight.
+    print('\nA CHALLENGER APPROACHES\n')
+    print('Begin fight VS {}'.format(bossObj.get_name()))
+    time.sleep(1)
+
+    # Loop until either the player or the boss run out of health.
+    while playerObj.get_health() > 0 and bossObj.get_health() > 0:
+        # Separate the attack phases for easier readability.
+        print('\n' + ('-' * 30))
+        playerObj.print_health()    # Display the player's current hp.
+        bossObj.print_stats()       # Display the boss' current hp.
+
+        # Begin player attack phase.
+        player_attack_phase(playerObj, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(playerObj, bossObj)
+
+    # If the player has no hp, then show a defeat screen and exit the program.
+    if playerObj.get_health() <= 0:
+        print('\nYOU DIED\n')
+        time.sleep(1)
+        sys.exit(0)
+
+    # If the boss has no hp, then show a victory screen and proceed.
+    print('\nENEMY FELLED\n')
+    time.sleep(1)
+    # Make the rest action interactive for the player.
+    input("Press'ENTER' to rest...")
+
+
+def mini_boss_fight(playerObj, bossObj):
+    # Set the boss stats to the stats appropriate for a mini boss.
+    bossObj.set_mini_boss()
+
+    # Introduce the boss to the player and begin the boss fight.
+    print('\nA CHALLENGER APPROACHES\n')
+    print('Begin fight VS {}'.format(bossObj.get_name()))
+    time.sleep(1)
+
+    # Loop until either the player or the boss run out of health.
+    while playerObj.get_health() > 0 and bossObj.get_health() > 0:
+        # Separate the attack phases for easier readability.
+        print('\n' + ('-' * 30))
+        playerObj.print_health()    # Display the player's current hp.
+        bossObj.print_stats()       # Display the boss' current hp.
+
+        # Begin player attack phase.
+        player_attack_phase(playerObj, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(playerObj, bossObj)
+
+    # If the player has no hp, then show a defeat screen and exit the program.
+    if playerObj.get_health() <= 0:
+        print('\nYOU DIED\n')
+        time.sleep(1)
+        sys.exit(0)
+
+    # If the boss has no hp, then show a victory screen and proceed.
+    print('\nENEMY FELLED\n')
+    time.sleep(1)
+    # Make the rest action interactive for the player.
+    input("Press'ENTER' to rest...")
+
+
+def main_boss_fight(playerObj, bossObj):
+    # Set the boss stats to the stats appropriate for a main boss.
+    bossObj.set_main_boss()
+
+    # Introduce the boss to the player and begin the boss fight.
+    print('\nA CHALLENGER APPROACHES\n')
+    print('Begin fight VS {}'.format(bossObj.get_name()))
+    time.sleep(1)
+
+    # Loop until either the player or the boss run out of health.
+    while playerObj.get_health() > 0 and bossObj.get_health() > 0:
+        # Separate the attack phases for easier readability.
+        print('\n' + ('-' * 30))
+        playerObj.print_health()    # Display the player's current hp.
+        bossObj.print_stats()       # Display the boss' current hp.
+
+        # Begin player attack phase.
+        player_attack_phase(playerObj, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(playerObj, bossObj)
+
+    # If the player has no hp, then show a defeat screen and exit the program.
+    if playerObj.get_health() <= 0:
+        print('\nYOU DIED\n')
+        time.sleep(1)
+        sys.exit(0)
+
+    # If the boss has no hp, then show a victory screen and proceed.
+    print('\nENEMY FELLED\n')
+    time.sleep(1)
+    # Make the rest action interactive for the player.
+    input("Press'ENTER' to end journey...")
+
+
 def main():
-    # TEST DATA #
-    playerOne = Character()
-    bossOne = Boss()
-    playerOne.print_stats()
+    playerOne = Character() # Create the player object.
+    bossOne = Boss()        # Create the boss object.
+    playerOne.print_stats() # Display the player's stats.
 
-    tutorial_boss_fight(playerOne, bossOne)
-    # TEST DATA #
+    tutorial_boss_fight(playerOne, bossOne) # Begin the tutorial boss fight.
+    playerOne.grace()   # Rest and heal the player.
+
+    field_boss_fight(playerOne, bossOne)    # Begin the field boss fight.
+    playerOne.grace()
+
+    mini_boss_fight(playerOne, bossOne) # Begin the mini boss fight.
+    playerOne.grace()
+
+    main_boss_fight(playerOne, bossOne) # Begin the main boss fight.
+    
 
 
-main()
+if __name__ == "__main__":
+    main()
+
