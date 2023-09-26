@@ -93,6 +93,10 @@ class Character:
         if self.__character == 'Quit':
             sys.exit()
 
+        # Get a name for the player.
+        self.__playerName = pyip.inputStr(
+                            prompt='\nEnter a name for your character: ')
+
         # "Load" the class and clear the screen.
         print('Loading class...')
         time.sleep(0.5)
@@ -152,6 +156,7 @@ class Character:
         
     def print_stats(self):
         # Print the player's class and stats.
+        print('Name: {}\n'.format(self.__playerName))
         print('Class: {}\n'.format(self.__character))
         for k, v in self.__stats.items():
             print(k.ljust(7, ' ') + str(v))
@@ -171,8 +176,12 @@ class Character:
 
     def print_health(self):
         # Print the player's current health.
-        print('\nTarnished')
+        print('\n{}'.format(self.__playerName))
         print('HP: {}'.format(self.__playerCurrentHealth))
+
+    def get_name(self):
+        # Return the player's name.
+        return self.__playerName
 
     def get_armor(self):
         # Return the player's armor rating for boss damage rolls.
@@ -307,7 +316,7 @@ class Boss():
 def player_attack_phase(playerObj, bossObj):
     # Allows the player to perform an attack on the boss.
     # Use input() so the fight is interactive for the user.
-    print('\nTarnished attack phase.')
+    print('\n{} attack phase.'.format(playerObj.get_name()))
     input("Press 'ENTER' to roll for attack...")
     if roll_d20() < bossObj.get_armor():    # Attack roll fails if the boss'
         print('Attack roll failed!')        # armor is higher than the roll.
@@ -341,7 +350,7 @@ def boss_attack_phase(playerObj, bossObj):
         # let the player know how much damage was done to the player.
         dmg = bossObj.attack()
         playerObj.reduce_health(dmg)
-        print('Hit Tarnished for {} damage!'.format(dmg))
+        print('Hit {} for {} damage!'.format(playerObj.get_name(), dmg))
         # Allow the player to interactively proceed to the next phase.
         input("Press 'ENTER' to continue...")
 
@@ -505,5 +514,9 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print()
+        print('\nTHANKS FOR PLAYING!')
 
