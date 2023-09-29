@@ -197,7 +197,7 @@ class Character:
         # Heal the player's current health to their max health.
         self.__playerCurrentHealth = self.__playerMaxHealth
         print('Fully healed and preparing for next battle...')
-        time.sleep(2)
+        time.sleep(1)
         print('-' * 30)
 
     def reduce_health(self, damage = 0):
@@ -438,6 +438,64 @@ def two_player_tutorial_boss_fight(playerList, bossObj):
     time.sleep(1)
     # Make the rest action interactive for the player.
     input("Press'ENTER' to rest...")
+    
+    
+# Function to fight the tutorial boss "Soldier of Godrick".
+# This should be the first fight performed by the player and should only
+# occur once in the program.
+# This version of the function is to be used for three players.
+def three_player_tutorial_boss_fight(playerList, bossObj):
+    # Set the players from the list to separate variables.
+    hostObj = playerList[0]
+    summonOne = playerList[1]
+    summonTwo = playerList[2]
+    
+    # Introduce the boss to the player and begin the boss fight.
+    print('\nA CHALLENGER APPROACHES\n')
+    print('Begin fight VS {}'.format(bossObj.get_name()))
+    time.sleep(1)
+
+    # Loop until either the player or the boss run out of health.
+    while hostObj.get_health() > 0 and bossObj.get_health() > 0:
+        # Separate the attack phases for easier readability.
+        print('\n' + ('-' * 30))
+        hostObj.print_health()      # Display the player's current hp.
+        summonOne.print_health()    # Display the first summon's hp.
+        summonTwo.print_health()    # Display the second summon's hp.
+        bossObj.print_stats()       # Display the boss' current hp.
+
+        # Begin host attack phase.
+        player_attack_phase(hostObj, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(hostObj, bossObj)
+        else:
+            # Break from the loop if the boss dies from the host's attack.
+            break
+        
+        # Begin first summon attack phase.
+        player_attack_phase(summonOne, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(summonOne, bossObj)
+            
+        # Begin second summon attack phase.
+        player_attack_phase(summonTwo, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(summonTwo, bossObj)
+
+    # If the player has no hp, then show a defeat screen and exit the program.
+    if hostObj.get_health() <= 0:
+        print('\nYOU DIED\n')
+        time.sleep(1)
+        sys.exit(0)
+    
+    # If the boss has no hp, then show a victory screen and proceed.
+    print('\nENEMY FELLED\n')
+    time.sleep(1)
+    # Make the rest action interactive for the player.
+    input("Press'ENTER' to rest...")
 
 
 def field_boss_fight(playerObj, bossObj):
@@ -510,6 +568,63 @@ def two_player_field_boss_fight(playerList, bossObj):
         if bossObj.get_health() > 0:
             # Begin boss attack phase if the boss is still alive.
             boss_attack_phase(summonOne, bossObj)
+
+    # If the player has no hp, then show a defeat screen and exit the program.
+    if hostObj.get_health() <= 0:
+        print('\nYOU DIED\n')
+        time.sleep(1)
+        sys.exit(0)
+
+    # If the boss has no hp, then show a victory screen and proceed.
+    print('\nENEMY FELLED\n')
+    time.sleep(1)
+    # Make the rest action interactive for the player.
+    input("Press'ENTER' to rest...")
+    
+    
+def three_player_field_boss_fight(playerList, bossObj):
+    # Set the players from the list to separate variables.
+    hostObj = playerList[0]
+    summonOne = playerList[1]
+    summonTwo = playerList[2]
+    
+    # Set the boss stats to the stats appropriate for a field boss.
+    bossObj.set_field_boss()
+
+    # Introduce the boss to the player and begin the boss fight.
+    print('\nA CHALLENGER APPROACHES\n')
+    print('Begin fight VS {}'.format(bossObj.get_name()))
+    time.sleep(1)
+
+    # Loop until either the player or the boss run out of health.
+    while hostObj.get_health() > 0 and bossObj.get_health() > 0:
+        # Separate the attack phases for easier readability.
+        print('\n' + ('-' * 30))
+        hostObj.print_health()      # Display the player's current hp.
+        summonOne.print_health()    # Display the first summon's current hp.
+        summonTwo.print_health()    # Display the second summon's current hp.
+        bossObj.print_stats()       # Display the boss' current hp.
+
+        # Begin player attack phase.
+        player_attack_phase(hostObj, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(hostObj, bossObj)
+        else:
+            # Break out of the loop if the boss dies to the host's attack.
+            break
+        
+        # Begin first summon attack phase.
+        player_attack_phase(summonOne, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(summonOne, bossObj)
+            
+        # Begin the second summon attack phase.
+        player_attack_phase(summonTwo, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(summonTwo, bossObj)
 
     # If the player has no hp, then show a defeat screen and exit the program.
     if hostObj.get_health() <= 0:
@@ -606,6 +721,63 @@ def two_player_mini_boss_fight(playerList, bossObj):
     time.sleep(1)
     # Make the rest action interactive for the player.
     input("Press'ENTER' to rest...")
+    
+    
+def three_player_mini_boss_fight(playerList, bossObj):
+    # Set the players from the list to separate variables.
+    hostObj = playerList[0]
+    summonOne = playerList[1]
+    summonTwo = playerList[2]
+    
+    # Set the boss stats to the stats appropriate for a mini boss.
+    bossObj.set_mini_boss()
+
+    # Introduce the boss to the player and begin the boss fight.
+    print('\nA CHALLENGER APPROACHES\n')
+    print('Begin fight VS {}'.format(bossObj.get_name()))
+    time.sleep(1)
+
+    # Loop until either the player or the boss run out of health.
+    while hostObj.get_health() > 0 and bossObj.get_health() > 0:
+        # Separate the attack phases for easier readability.
+        print('\n' + ('-' * 30))
+        hostObj.print_health()      # Display the player's current hp.
+        summonOne.print_health()    # Display the first summon's current hp.
+        summonTwo.print_health()    # Display the second summon's current hp.
+        bossObj.print_stats()       # Display the boss' current hp.
+
+        # Begin player attack phase.
+        player_attack_phase(hostObj, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(hostObj, bossObj)
+        else:
+            # Break from the loop if the boss dies from the host's attack.
+            break
+        
+        # Begin first summon attack phase.
+        player_attack_phase(summonOne, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(summonOne, bossObj)
+            
+        # Begin second summon attack phase.
+        player_attack_phase(summonTwo, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(summonTwo, bossObj)
+
+    # If the player has no hp, then show a defeat screen and exit the program.
+    if hostObj.get_health() <= 0:
+        print('\nYOU DIED\n')
+        time.sleep(1)
+        sys.exit(0)
+
+    # If the boss has no hp, then show a victory screen and proceed.
+    print('\nENEMY FELLED\n')
+    time.sleep(1)
+    # Make the rest action interactive for the player.
+    input("Press'ENTER' to rest...")
 
 
 def main_boss_fight(playerObj, bossObj):
@@ -690,6 +862,63 @@ def two_player_main_boss_fight(playerList, bossObj):
     time.sleep(1)
     # Make the rest action interactive for the player.
     input("Press'ENTER' to end journey...")
+    
+    
+def three_player_main_boss_fight(playerList, bossObj):
+    # Set the players from the list to separate variables.
+    hostObj = playerList[0]
+    summonOne = playerList[1]
+    summonTwo = playerList[2]
+    
+    # Set the boss stats to the stats appropriate for a main boss.
+    bossObj.set_main_boss()
+
+    # Introduce the boss to the player and begin the boss fight.
+    print('\nA CHALLENGER APPROACHES\n')
+    print('Begin fight VS {}'.format(bossObj.get_name()))
+    time.sleep(1)
+
+    # Loop until either the player or the boss run out of health.
+    while hostObj.get_health() > 0 and bossObj.get_health() > 0:
+        # Separate the attack phases for easier readability.
+        print('\n' + ('-' * 30))
+        hostObj.print_health()      # Display the player's current hp.
+        summonOne.print_health()    # Display the first summon's current hp.
+        summonTwo.print_health()    # Display the second summon's current hp.
+        bossObj.print_stats()       # Display the boss' current hp.
+
+        # Begin player attack phase.
+        player_attack_phase(hostObj, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(hostObj, bossObj)
+        else:
+            # Break from the loop if the boss dies from the host's attack.
+            break
+        
+        # Begin first summon attack phase.
+        player_attack_phase(summonOne, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(summonOne, bossObj)
+            
+        # Begin second summon attack phase.
+        player_attack_phase(summonTwo, bossObj)
+        if bossObj.get_health() > 0:
+            # Begin boss attack phase if the boss is still alive.
+            boss_attack_phase(summonTwo, bossObj)
+
+    # If the player has no hp, then show a defeat screen and exit the program.
+    if hostObj.get_health() <= 0:
+        print('\nYOU DIED\n')
+        time.sleep(1)
+        sys.exit(0)
+
+    # If the boss has no hp, then show a victory screen and proceed.
+    print('\nENEMY FELLED\n')
+    time.sleep(1)
+    # Make the rest action interactive for the player.
+    input("Press'ENTER' to end journey...")
 
 
 def single_player_game():
@@ -736,8 +965,41 @@ def two_player_game():
     
     # Begin the main boss fight.
     two_player_main_boss_fight(players, bossOne)
+    
+    
+def three_player_game():
+    host = Character()          # Create the host object.
+    summonOne = Character()     # Create the first summon object.
+    summonTwo = Character()     # Create the second summon object.
+    players = [host, summonOne, summonTwo] # Create the player list.
+    bossOne = Boss()    # Create the boss object.
+
+    host.print_stats()          # Display the host's stats.
+    print()
+    summonOne.print_stats()     # Display the first summon's stats.
+    print()
+    summonTwo.print_stats()     # Display the second summon's stats.
+
+    # Begin the tutorial boss fight.
+    three_player_tutorial_boss_fight(players, bossOne)    
     host.grace()        # Rest and heal the host.
     summonOne.grace()   # Rest and heal the first summon.
+    summonTwo.grace()   # Rest and heal the second summon.
+    
+    # Begin the field boss fight.
+    three_player_field_boss_fight(players, bossOne)
+    host.grace()        # Rest and heal the host.
+    summonOne.grace()   # Rest and heal the first summon.
+    summonTwo.grace()   # Rest and heal the second summon.
+    
+    # Begin the mini boss fight.
+    three_player_mini_boss_fight(players, bossOne)
+    host.grace()        # Rest and heal the host.
+    summonOne.grace()   # Rest and heal the first summon.
+    summonTwo.grace()   # Rest and heal the second summon.
+    
+    # Begin the main boss fight.
+    three_player_main_boss_fight(players, bossOne)
 
 
 def main():
