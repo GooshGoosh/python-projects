@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 
-# eldenRingOOP.py - Mini Elden Ring-based game that lets the user
-# the tutorial boss Solder of Godrick and a majority of the field,
-# mini, and main bosses from Elden Ring. Uses a random die roll of
-# 1-20 to decide if the Tarnished was able to attack the boss and
-# dodge/block the boss' attack.
-
-# Allows class selection via pyinputplus module and a list of .json
-# files stored in elden_ring/classes. The .json file contains the
-# class name followed by each stat and their values for each Elden
-# Ring starting class (e.g. Vig: 0).
-# The stats are followed by the 6 equipment slots for the character
-# including Right Hand, Left Hand, Helm, Torso, Wrists, and Legs.
+'''
+eldenRingOOP.py - Mini Elden Ring-based game that lets the user
+the tutorial boss Solder of Godrick and a majority of the field,
+mini, and main bosses from Elden Ring. Uses a random die roll of
+1-20 to decide if the Tarnished was able to attack the boss and
+dodge/block the boss' attack.
+Allows class selection via pyinputplus module and a list of .json
+files stored in elden_ring/classes. The .json file contains the
+class name followed by each stat and their values for each Elden
+Ring starting class (e.g. Vig: 0).
+The stats are followed by the 6 equipment slots for the character
+including Right Hand, Left Hand, Helm, Torso, Wrists, and Legs.
+'''
 
 
 import random
