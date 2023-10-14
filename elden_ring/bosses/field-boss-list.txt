@@ -1,3 +1,4 @@
+Abductor Virgins
 Adan, Thief of Fire
 Alabaster Lord
 Alecto, Black Knife Ringleader
@@ -5,16 +6,20 @@ Ancient Dragon Lansseax
 Ancient Hero of Zamor
 Astel, Stars of Darkness
 Battlemage Hugues
-Beast of Farum Azula
+Beastman of Farum Azula
 Bell Bearing Hunter
 Black Blade Kindred
+Black Knife Assassin
+Bloodhound Knight
 Bloodhound Knight Darriwil
 Bols, Carian Knight
+Cleanrot Knight
 Commander Niall
 Commander O'Neil
 Crucible Knight
 Crucible Knight Ordovis
 Crucible Knight Siluria
+Crystalians
 Death Bird
 Death Rite Bird
 Demi-Human Chief
@@ -27,39 +32,50 @@ Elemer of the Briar
 Erdtree Avatar
 Erdtree Burial Watchdog
 Esgar, Priest of Blood
+Fallingstar Beast
 Fell Twins
-Fia's Champion
+Fia's Champions
 Flying Dragon Greyll
+Frenzied Duelist
 Full-Grown Fallingstar Beast
 Glintstone Dragon Smarag
 God-Devouring Serpent
 Godefroy the Grafted
-Godfrey (Golden Shade)
+Godfrey, First Elden Lord (Golden Shade)
 Godskin Apostle
 Godskin Noble
 Grafted Scion
 Grave Warden Duelist
 Great Wyrm Theodorix
+Guardian Golem
+Kindred of Rot
 Lion Guardian
 Loretta, Knight of the Haligtree
 Mad Pumpkin Head
+Magma Wyrm
 Magma Wyrm Makar
 Mimic Tear
 Miranda, the Blighted Bloom
 Misbegotten Crusader
+Misbegotten Warrior
 Mohg, the Omen
 Necromancer Garris
 Night's Cavalry
+Nox Swordstress & Nox Priest
 Omenkiller
 Onyx Lord
 Patches
 Perfumer Tricia
 Putrid Avatar
+Putrid Grave Warden Duelist
 Putrid Tree Spirit
 Red Wolf of the Champion
 Roundtable Knight Vyke
+Royal Knight Loretta
+Royal Revenant
 Runebear
 Sanguine Noble
+Scaly Misbegotten
 Sir Gideon Ofnir, the All-Knowing
 Soldier of Godrick
 Spirit-Caller Snail
