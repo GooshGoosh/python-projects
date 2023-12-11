@@ -662,12 +662,15 @@ def single_player_game():
 
     tutorial_boss_fight(playerOne, bossOne) # Begin the tutorial boss fight.
     playerOne.grace()   # Rest and heal the player.
+    time.sleep(2.5)
 
     field_boss_fight(playerOne, bossOne)    # Begin the field boss fight.
     playerOne.grace()
+    time.sleep(2.5)
 
     mini_boss_fight(playerOne, bossOne) # Begin the mini boss fight.
     playerOne.grace()
+    time.sleep(2.5)
 
     main_boss_fight(playerOne, bossOne) # Begin the main boss fight.
     
@@ -683,19 +686,22 @@ def two_player_game():
     summonOne.print_stats()     # Display the first summon's stats.
 
     # Begin the tutorial boss fight.
-    two_player_tutorial_boss_fight(players, bossOne)    
-    host.grace()        # Rest and heal the host.
-    summonOne.grace()   # Rest and heal the first summon.
+    two_player_tutorial_boss_fight(players, bossOne)
+    for player in players:  # Rest and heal each of the players
+        player.grace()    
+    time.sleep(2.5)
     
     # Begin the field boss fight.
     two_player_field_boss_fight(players, bossOne)
-    host.grace()        # Rest and heal the host.
-    summonOne.grace()   # Rest and heal the first summon.
+    for player in players:  # Rest and heal each of the players
+        player.grace()
+    time.sleep(2.5)
     
     # Begin the mini boss fight.
     two_player_mini_boss_fight(players, bossOne)
-    host.grace()        # Rest and heal the host.
-    summonOne.grace()   # Rest and heal the first summon.
+    for player in players:  # Rest and heal each of the players
+        player.grace()
+    time.sleep(2.5)
     
     # Begin the main boss fight.
     two_player_main_boss_fight(players, bossOne)
@@ -715,34 +721,39 @@ def three_player_game():
     summonTwo.print_stats()     # Display the second summon's stats.
 
     # Begin the tutorial boss fight.
-    three_player_tutorial_boss_fight(players, bossOne)    
-    host.grace()        # Rest and heal the host.
-    summonOne.grace()   # Rest and heal the first summon.
-    summonTwo.grace()   # Rest and heal the second summon.
+    three_player_tutorial_boss_fight(players, bossOne)
+    for player in players:  # Rest and heal each of the players
+        player.grace()    
+    time.sleep(2.5)
     
     # Begin the field boss fight.
     three_player_field_boss_fight(players, bossOne)
-    host.grace()        # Rest and heal the host.
-    summonOne.grace()   # Rest and heal the first summon.
-    summonTwo.grace()   # Rest and heal the second summon.
+    for player in players:  # Rest and heal each of the players
+        player.grace()
+    time.sleep(2.5)
     
     # Begin the mini boss fight.
     three_player_mini_boss_fight(players, bossOne)
-    host.grace()        # Rest and heal the host.
-    summonOne.grace()   # Rest and heal the first summon.
-    summonTwo.grace()   # Rest and heal the second summon.
+    for player in players:  # Rest and heal each of the players
+        player.grace()
+    time.sleep(2.5)
     
     # Begin the main boss fight.
     three_player_main_boss_fight(players, bossOne)
 
 
 def main():
+    # Get the number of players for the game. There can be a minimum
+    # of 1 player (the host) and a maximum of 3 players (2 summons).
     numOfPlayers = pyip.inputInt(prompt="Enter the number of players. Max 3: ", min=1, max=3)
     
+    # Start the correct game based on the number of players.
     if numOfPlayers == 1:
         single_player_game()
     elif numOfPlayers == 2:
         two_player_game()
+    else:
+        three_player_game()
     
 
 if __name__ == "__main__":
