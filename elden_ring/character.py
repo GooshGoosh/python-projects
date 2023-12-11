@@ -160,11 +160,10 @@ class Character:
 
     def grace(self):
         print('\nRest...') # Rest and prepare for the next battle.
-        time.sleep(3)
         # Heal the player's current health to their max health.
         self.__playerCurrentHealth = self.__playerMaxHealth
         print('Fully healed and preparing for next battle...')
-        time.sleep(1)
+        time.sleep(0.5)
         print('-' * 30)
 
     def reduce_health(self, damage = 0):
