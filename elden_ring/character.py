@@ -169,6 +169,11 @@ class Character:
     def reduce_health(self, damage = 0):
         # Reduce the player's current health by the damage amount.
         self.__playerCurrentHealth -= damage
+        
+        # If the player's health is reduced below 0, then set the
+        # health value at 0 instead.
+        if self.__playerCurrentHealth < 0:
+            self.__playerCurrentHealth = 0
 
     def attack(self):
         # Perform a d10 die roll to determine the player's damage done to the
