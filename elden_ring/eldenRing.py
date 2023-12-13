@@ -155,6 +155,12 @@ def two_player_tutorial_boss_fight(playerList, bossObj):
             # Break from the loop if the boss dies from the host's attack.
             break
         
+        # If the host has no hp, then show a defeat screen and exit the program.
+        if hostObj.get_health() == 0:
+            print('\nYOU DIED\n')
+            time.sleep(1)
+            sys.exit(0)
+        
         # Begin first summon attack phase.
         # If the summon's hp reaches 0, then skip this phase.
         if summonOne.get_health() != 0:
@@ -162,12 +168,6 @@ def two_player_tutorial_boss_fight(playerList, bossObj):
             if bossObj.get_health() > 0:
                 # Begin boss attack phase if the boss is still alive.
                 boss_attack_phase(summonOne, bossObj)
-
-    # If the player has no hp, then show a defeat screen and exit the program.
-    if hostObj.get_health() <= 0:
-        print('\nYOU DIED\n')
-        time.sleep(1)
-        sys.exit(0)
     
     # If the boss has no hp, then show a victory screen and proceed.
     print('\nENEMY FELLED\n')
@@ -209,6 +209,12 @@ def three_player_tutorial_boss_fight(playerList, bossObj):
             # Break from the loop if the boss dies from the host's attack.
             break
         
+        # If the host has no hp, then show a defeat screen and exit the program.
+        if hostObj.get_health() == 0:
+            print('\nYOU DIED\n')
+            time.sleep(1)
+            sys.exit(0)
+        
         # Begin first summon attack phase.
         # If the summon's hp reaches 0, then skip this phase.
         if summonOne.get_health() != 0:
@@ -224,12 +230,6 @@ def three_player_tutorial_boss_fight(playerList, bossObj):
             if bossObj.get_health() > 0:
                 # Begin boss attack phase if the boss is still alive.
                 boss_attack_phase(summonTwo, bossObj)
-
-    # If the player has no hp, then show a defeat screen and exit the program.
-    if hostObj.get_health() <= 0:
-        print('\nYOU DIED\n')
-        time.sleep(1)
-        sys.exit(0)
     
     # If the boss has no hp, then show a victory screen and proceed.
     print('\nENEMY FELLED\n')
@@ -303,6 +303,12 @@ def two_player_field_boss_fight(playerList, bossObj):
             # Break out of the loop if the boss dies to the host's attack.
             break
         
+        # If the host has no hp, then show a defeat screen and exit the program.
+        if hostObj.get_health() == 0:
+            print('\nYOU DIED\n')
+            time.sleep(1)
+            sys.exit(0)
+        
         # Begin first summon attack phase.
         # If the summon's hp reaches 0, then skip this phase.
         if summonOne.get_health() != 0:
@@ -310,12 +316,6 @@ def two_player_field_boss_fight(playerList, bossObj):
             if bossObj.get_health() > 0:
                 # Begin boss attack phase if the boss is still alive.
                 boss_attack_phase(summonOne, bossObj)
-
-    # If the player has no hp, then show a defeat screen and exit the program.
-    if hostObj.get_health() <= 0:
-        print('\nYOU DIED\n')
-        time.sleep(1)
-        sys.exit(0)
 
     # If the boss has no hp, then show a victory screen and proceed.
     print('\nENEMY FELLED\n')
@@ -356,6 +356,12 @@ def three_player_field_boss_fight(playerList, bossObj):
             # Break out of the loop if the boss dies to the host's attack.
             break
         
+        # If the host has no hp, then show a defeat screen and exit the program.
+        if hostObj.get_health() == 0:
+            print('\nYOU DIED\n')
+            time.sleep(1)
+            sys.exit(0)
+        
         # Begin first summon attack phase.
         # If the summon's hp reaches 0, then skip this phase.
         if summonOne.get_health() != 0:
@@ -371,12 +377,6 @@ def three_player_field_boss_fight(playerList, bossObj):
             if bossObj.get_health() > 0:
                 # Begin boss attack phase if the boss is still alive.
                 boss_attack_phase(summonTwo, bossObj)
-
-    # If the player has no hp, then show a defeat screen and exit the program.
-    if hostObj.get_health() <= 0:
-        print('\nYOU DIED\n')
-        time.sleep(1)
-        sys.exit(0)
 
     # If the boss has no hp, then show a victory screen and proceed.
     print('\nENEMY FELLED\n')
@@ -450,6 +450,12 @@ def two_player_mini_boss_fight(playerList, bossObj):
             # Break from the loop if the boss dies from the host's attack.
             break
         
+        # If the host has no hp, then show a defeat screen and exit the program.
+        if hostObj.get_health() == 0:
+            print('\nYOU DIED\n')
+            time.sleep(1)
+            sys.exit(0)
+        
         # Begin first summon attack phase.
         # If the summon's hp reaches 0, then skip this phase.
         if summonOne.get_health() != 0:
@@ -457,12 +463,6 @@ def two_player_mini_boss_fight(playerList, bossObj):
             if bossObj.get_health() > 0:
                 # Begin boss attack phase if the boss is still alive.
                 boss_attack_phase(summonOne, bossObj)
-
-    # If the player has no hp, then show a defeat screen and exit the program.
-    if hostObj.get_health() <= 0:
-        print('\nYOU DIED\n')
-        time.sleep(1)
-        sys.exit(0)
 
     # If the boss has no hp, then show a victory screen and proceed.
     print('\nENEMY FELLED\n')
@@ -503,6 +503,12 @@ def three_player_mini_boss_fight(playerList, bossObj):
             # Break from the loop if the boss dies from the host's attack.
             break
         
+        # If the host has no hp, then show a defeat screen and exit the program.
+        if hostObj.get_health() == 0:
+            print('\nYOU DIED\n')
+            time.sleep(1)
+            sys.exit(0)
+        
         # Begin first summon attack phase.
         # If the summon's hp reaches 0, then skip this phase.
         if summonOne.get_health() != 0:
@@ -518,12 +524,6 @@ def three_player_mini_boss_fight(playerList, bossObj):
             if bossObj.get_health() > 0:
                 # Begin boss attack phase if the boss is still alive.
                 boss_attack_phase(summonTwo, bossObj)
-
-    # If the player has no hp, then show a defeat screen and exit the program.
-    if hostObj.get_health() <= 0:
-        print('\nYOU DIED\n')
-        time.sleep(1)
-        sys.exit(0)
 
     # If the boss has no hp, then show a victory screen and proceed.
     print('\nENEMY FELLED\n')
@@ -597,6 +597,12 @@ def two_player_main_boss_fight(playerList, bossObj):
             # Break from the loop if the boss dies from the host's attack.
             break
         
+        # If the host has no hp, then show a defeat screen and exit the program.
+        if hostObj.get_health() == 0:
+            print('\nYOU DIED\n')
+            time.sleep(1)
+            sys.exit(0)
+        
         # Begin first summon attack phase.
         # If the summon's hp reaches 0, then skip this phase.
         if summonOne.get_health() != 0:
@@ -604,12 +610,6 @@ def two_player_main_boss_fight(playerList, bossObj):
             if bossObj.get_health() > 0:
                 # Begin boss attack phase if the boss is still alive.
                 boss_attack_phase(summonOne, bossObj)
-
-    # If the player has no hp, then show a defeat screen and exit the program.
-    if hostObj.get_health() <= 0:
-        print('\nYOU DIED\n')
-        time.sleep(1)
-        sys.exit(0)
 
     # If the boss has no hp, then show a victory screen and proceed.
     print('\nENEMY FELLED\n')
@@ -650,6 +650,12 @@ def three_player_main_boss_fight(playerList, bossObj):
             # Break from the loop if the boss dies from the host's attack.
             break
         
+        # If the host has no hp, then show a defeat screen and exit the program.
+        if hostObj.get_health() == 0:
+            print('\nYOU DIED\n')
+            time.sleep(1)
+            sys.exit(0)
+        
         # Begin first summon attack phase.
         # If the summon's hp reaches 0, then skip this phase.
         if summonOne.get_health() != 0:
@@ -665,12 +671,6 @@ def three_player_main_boss_fight(playerList, bossObj):
             if bossObj.get_health() > 0:
                 # Begin boss attack phase if the boss is still alive.
                 boss_attack_phase(summonTwo, bossObj)
-
-    # If the player has no hp, then show a defeat screen and exit the program.
-    if hostObj.get_health() <= 0:
-        print('\nYOU DIED\n')
-        time.sleep(1)
-        sys.exit(0)
 
     # If the boss has no hp, then show a victory screen and proceed.
     print('\nENEMY FELLED\n')
