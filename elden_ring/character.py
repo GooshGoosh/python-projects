@@ -163,7 +163,7 @@ class Character:
         # Heal the player's current health to their max health.
         self.__playerCurrentHealth = self.__playerMaxHealth
         print('Fully healed and preparing for next battle...')
-        time.sleep(0.5)
+        time.sleep(0.70)
         print('-' * 30)
 
     def reduce_health(self, damage = 0):
