@@ -1,8 +1,14 @@
+"""
+A simple GUI program to simulate rolling a siz-sided die.
+"""
 import tkinter as tk
 import random
 
 
 def roll():
+    """Generate a random integer from 1-6 and place it in the text value
+    of the label.
+    """
     lbl_value["text"] = str(random.randint(1,6))
 
 root = tk.Tk()
