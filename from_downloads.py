@@ -1,5 +1,5 @@
 '''
-fromDownloads.py - Searches the /home/{USER}/Downloads/ directory for files that
+from_downloads.py - Searches the /home/{USER}/Downloads/ directory for files that
 were added (downloaded) on the current date and adds them to the current working
 directory. This will grab all files and subdirectories within the Downloads directory.
 This program uses the date and time modules to get today's date, the last modified

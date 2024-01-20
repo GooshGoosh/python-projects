@@ -1,5 +1,5 @@
 '''
-gobusterScans.py - Performs two separate gobuster scans when the program is run.
+gobuster_scans.py - Performs two separate gobuster scans when the program is run.
 The program takes two command-line arguments when run. The first argument is the
 target ip and the second argument is the port number.The first scan output will
 be saved as 'gobuster-big.txt'. The second scan output will be saved as

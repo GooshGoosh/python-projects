@@ -1,3 +1,6 @@
+'''
+magic_eight_ball.py - Returns a random message as seen on a magic eight ball.
+'''
 import random
 
 messages = ['It is certain',
