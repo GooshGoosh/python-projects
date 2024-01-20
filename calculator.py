@@ -1,7 +1,7 @@
-"""
-A simple graphical user-interface (GUI) calculator program made using the
-tkinter library available in Python.
-"""
+'''
+calculator.py - A simple graphical user-interface (GUI) calculator program
+made using the tkinter library available in Python.
+'''
 
 import tkinter as tk
 
@@ -17,10 +17,11 @@ result = ""
 
 
 def reset_values():
+    """Resets the values for the operator, num_1 and num_2 variables.
+    """
     global operator
     global num_1
     global num_2
-    global result
 
     operator = ""
     num_1 = ""
@@ -28,10 +29,21 @@ def reset_values():
 
 
 def update_number_display(num_str):
+    """Updates the value that is displayed in the display label.
+
+    Args:
+        num_str (str): A number formatted as a string. e.g. "6".
+    """
     lbl_display['text'] = num_str
 
 
 def perform_calculation():
+    """Performs a calculation of num_1 and num_2 based on the operator that was
+    selected. Uses a match-case statement to determine what operation should be
+    performed. The display is then updated to show the user the result.
+    """
+    global result
+
     match operator:
 
         case '/':
@@ -74,6 +86,13 @@ def perform_calculation():
 
 
 def clicked_num(num_str):
+    """Adds a number to the string stored in the num_1 or num_2 variable depending
+    on if an operator has been selected or not. The display is then updated to show
+    the user what the current value of num_1 or num_2 is.
+
+    Args:
+        num_str (str): A number formatted as a string. e.g. "6".
+    """
     global num_1
     global num_2
 
@@ -86,6 +105,10 @@ def clicked_num(num_str):
 
 
 def clicked_clear():
+    """Clears the value stored in either num_1 or num_2 depending on if an
+    operator has already been chosen. The display is then updated to show
+    the user the new blank value of num_1 or num_2.
+    """
     global num_1
     global num_2
 
@@ -99,34 +122,62 @@ def clicked_clear():
 
 
 def clicked_divide():
+    """If there is no operator value and num_1 has an appropriate value, sets
+    the operator value to division and updates the display with a blank value.
+    """
     global operator
 
-    operator = "/"
-    update_number_display("")
+    if num_1 == "." or not num_1:
+        update_number_display(num_1)
+    elif not operator:
+        operator = "/"
+        update_number_display("")
 
 
 def clicked_multiply():
+    """If there is no operator value and num_1 has an appropriate value, sets
+    the operator value to multiplication and updates the display with a blank value.
+    """
     global operator
 
-    operator = "*"
-    update_number_display("")
+    if num_1 == "." or not num_1:
+        update_number_display(num_1)
+    elif not operator:
+        operator = "*"
+        update_number_display("")
 
 
 def clicked_subtract():
+    """If there is no operator value and num_1 has an appropriate value, sets
+    the operator value to subtraction and updates the display with a blank value.
+    """
     global operator
 
-    operator = "-"
-    update_number_display("")
+    if num_1 == "." or not num_1:
+        update_number_display(num_1)
+    elif not operator:
+        operator = "-"
+        update_number_display("")
 
 
 def clicked_add():
+    """If there is no operator value and num_1 has an appropriate value, sets
+    the operator value to addition and updates the display with a blank value.
+    """
     global operator
 
-    operator = "+"
-    update_number_display("")
+    if num_1 == "." or not num_1:
+        update_number_display(num_1)
+    elif not operator:
+        operator = "+"
+        update_number_display("")
 
 
 def clicked_del():
+    """Deletes the last number in the string for either num_1 or num_2 and then
+    updates the display to show the new value for num_1 or num_2. If there is no
+    value in num_1 or num_2, then the display is updated with a blank value.
+    """
     global num_1
     global num_2
 
@@ -145,30 +196,39 @@ def clicked_del():
 
 
 def clicked_decimal():
+    """Adds a decimal to the number string for num_1 or num_2 if a decimal is
+    not already present in the number string. The display is then updated to
+    show the updated number string value.
+    """
     global num_1
     global num_2
 
     if not operator:
-        num_1 += "."
+        if "." not in num_1:
+            num_1 += "."
         update_number_display(num_1)
     else:
-        num_2 += "."
+        if "." not in num_2:
+            num_2 += "."
         update_number_display(num_2)
 
 
 def clicked_equal():
+    """Checks if num_1 and num_2 have appropriate values and, if so, performs
+    a calculation based on the two values given and the operator value.
+    """
     # If there is no operator, then display num_1.
     if not operator:
         update_number_display(num_1)
-    # If num_2 has no value, then display num_2.
-    elif not num_2:
+    # If num_2 has no value or is just a decimal, then display num_2.
+    elif not num_2 or num_2 == ".":
         update_number_display(num_2)
     # If there is a value for operator, num_1 and num_2, then calculate.
     else:
         perform_calculation()
 
 
-# The base, size, and title of the GUI window.
+# The base and title of the GUI window.
 root = tk.Tk()
 root.title("Tkinter Calculator")
 
@@ -239,6 +299,8 @@ btn_decimal = tk.Button(master=frm_button_grid, text=".",
                         padx=BTN_X_PAD, pady=BTN_Y_PAD, highlightbackground=COLOR,
                         command=clicked_decimal)
 
+# Create the number buttons. Use lambda to be able to pass the number clicked to
+# the clicked_num function as a parameter.
 btn_0 = tk.Button(master=frm_button_grid, text="0",
                         relief=tk.RAISED, borderwidth=2,
                         padx=BTN_X_PAD, pady=BTN_Y_PAD, highlightbackground=COLOR,

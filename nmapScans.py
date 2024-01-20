@@ -16,9 +16,9 @@ if len(sys.argv) != 2:
     print('Usage: nmapScans.py <target ip>')
     sys.exit()
 
-targetIP = sys.argv[1]                                                      # Save the target IP.
-basicScan = f'nmap -sV -sC -oN initial.nmap -vv {targetIP}'                 # Command for basic scan.
-fullScan = f'nmap -sV -sC -oN all-ports.nmap -p- -vv {targetIP}'            # Command for full scan.
+TARGET_IP = sys.argv[1]                                                      # Save the target IP.
+basicScan = f'nmap -sV -sC -oN initial.nmap -vv {TARGET_IP}'                 # Command for basic scan.
+fullScan = f'nmap -sV -sC -oN all-ports.nmap -p- -vv {TARGET_IP}'            # Command for full scan.
 
 print('Starting basic scan...\n')
 os.system(basicScan)                                                        # Run the basic scan.
