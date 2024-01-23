@@ -1,3 +1,8 @@
+'''
+snowstorm.py - Creates a snowstorm-like effect on the terminal.
+'''
+
+
 import os
 import random
 import time
@@ -5,15 +10,16 @@ import time
 
 # Thickness of snow on screen.
 SNOW_DENSITY = 5
+
 # Number of seconds before updating snowstorm
 DELAY = .3
 
 snowflakes = ['❄️', '❅', '❆', '❃', '❇', '❈', '❋']
 
-term = os.get_terminal_size()
+TERM = os.get_terminal_size()
 
-w = term.columns
-h = term.lines
+w = TERM.columns
+h = TERM.lines
 
 grid = []
 
@@ -22,6 +28,8 @@ for _ in range(h):
 
 
 def draw_grid():
+    """draw_grid Outputs the contents of the grid to create the snowstorm.
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
 
     # Remove cursor from the terminal.
@@ -29,8 +37,8 @@ def draw_grid():
 
     output = ''
 
-    for row in grid:
-        output += ''.join(row) + '\n'
+    for line in grid:
+        output += ''.join(line) + '\n'
 
     output = output.strip('\n')
 
