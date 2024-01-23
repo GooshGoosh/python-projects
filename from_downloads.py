@@ -38,12 +38,12 @@ for filename in downloads_list:
     else:
         # Get the last modified time of file, convert it and then format it to
         # match the today() date syntax.
-        modifiedTime = os.path.getmtime(os.path.join(DOWNLOADS, filename))
-        convertTime = time.localtime(modifiedTime)
-        formatTime = time.strftime('%Y-%m-%d', convertTime)
+        modified_time = os.path.getmtime(os.path.join(DOWNLOADS, filename))
+        convert_time = time.localtime(modified_time)
+        format_time = time.strftime('%Y-%m-%d', convert_time)
 
         # Move the file to the CWD if it was modified today.
-        if str(formatTime) == str(TODAY):
+        if str(format_time) == str(TODAY):
             shutil.move(os.path.join(DOWNLOADS, filename), os.path.join(CWD, filename))
             files_moved.append(filename)
 
